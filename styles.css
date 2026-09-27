@@ -1,0 +1,442 @@
+/* ==================================================================
+   PettoVet — page vitrine autonome
+   ------------------------------------------------------------------
+   Reprise fidèle de frontend2/src/views/HomePage.vue, de Footer.vue et
+   des jetons de frontend2/src/styles/design.css. Les valeurs ne sont
+   pas réinventées : elles sont recopiées, pour que les deux pages se
+   ressemblent à l'œil près.
+
+   Toute modification faite ici doit être reportée dans l'application,
+   et inversement (voir README.md).
+   ================================================================== */
+
+:root {
+  /* Jetons repris de design.css */
+  --pv-teal: #2ab7bc;
+  --pv-navy: #16334c;
+  --pv-field: #f4f1f1;
+  --pv-surface: #fff;
+  --pv-header-border: #f0ede4;
+  --pv-muted: #8c97a3;
+  --pv-teal-wash: #eaf8f8;
+  --pv-teal-light: #8ed0d3;
+  --pv-max: 1240px;
+  --pv-pad: 32px;
+  --pv-r-pill: 999px;
+
+  /* Propres à la page vitrine */
+  --pv-btn: #529597;
+  --pv-pink: rgb(247, 94, 188);
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Poppins ne contient pas les glyphes arabes */
+[dir="rtl"] * {
+  font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--pv-surface);
+  color: var(--pv-navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+a { color: var(--pv-teal); text-decoration: none; }
+
+/* Les champs marqués dir="ltr" (téléphone, e-mail) ne basculent pas */
+[dir="rtl"] [dir="ltr"] { text-align: left; }
+
+/* ---------------- En-tête ---------------- */
+.pv-header {
+  background: var(--pv-surface);
+  border-bottom: 1px solid var(--pv-header-border);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.pv-header-inner {
+  max-width: var(--pv-max);
+  margin: 0 auto;
+  padding: 7px var(--pv-pad);
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.brand { display: inline-flex; align-items: center; }
+.brand-logo { height: 62px; width: auto; display: block; }
+.spacer { flex: 1; }
+
+.locale-switcher {
+  display: inline-flex;
+  background: var(--pv-field);
+  border-radius: var(--pv-r-pill);
+  padding: 4px;
+  gap: 2px;
+}
+
+.locale-btn {
+  border: none;
+  cursor: pointer;
+  border-radius: var(--pv-r-pill);
+  padding: 6px 13px;
+  font-size: 12px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--pv-muted);
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.locale-btn:hover { color: var(--pv-navy); }
+
+.locale-btn.is-active {
+  background: var(--pv-surface);
+  color: var(--pv-navy);
+}
+
+/* ---------------- Corps ---------------- */
+.section-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.section-text1 {
+  flex: 1;
+  max-width: 50%;
+  font-size: 18px;
+  color: #333;
+}
+
+.section-text {
+  flex: 1;
+  max-width: 50%;
+  font-size: 18px;
+  color: #504f4f;
+  margin-inline-start: 50px;
+}
+
+.section-image1,
+.section-image2 {
+  flex: 1;
+  max-width: 50%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.section-image1 { order: -1; }
+.section-reverse .section-text { order: -1; }
+
+/* ---------------- Boutons ---------------- */
+.btn,
+.btn2 {
+  background-color: var(--pv-btn);
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 17px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.btn:hover,
+.btn2:hover {
+  background-color: orange;
+  color: #fff;
+}
+
+/* ---------------- Points forts ---------------- */
+.features-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.features-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px 30px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.icon {
+  width: 85px;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item:hover .icon {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.feature-icon {
+  width: 42px;
+  height: 42px;
+  color: #fff;
+}
+
+.feature-title {
+  margin: 14px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pv-navy);
+  transition: color 0.4s ease;
+}
+
+.feature-item:hover .feature-title { color: var(--pv-btn); }
+
+.feature-desc {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #6b7785;
+  max-width: 280px;
+}
+
+/* ---------------- Contact ---------------- */
+.contact-section {
+  text-align: center;
+  background: var(--pv-teal-wash);
+  border-radius: 22px;
+  padding: 46px 24px 40px;
+}
+
+.contact-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 12px;
+  color: var(--pv-navy);
+}
+
+.contact-lead {
+  margin: 0 auto;
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #504f4f;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.contact-actions .btn2 {
+  background-color: transparent;
+  color: var(--pv-navy);
+  border: 1.5px solid var(--pv-teal-light);
+}
+
+.contact-actions .btn2:hover {
+  background-color: var(--pv-btn);
+  border-color: var(--pv-btn);
+  color: #fff;
+}
+
+.contact-section-links {
+  margin-top: 28px;
+  color: var(--pv-navy);
+}
+
+/* ---------------- Liens de contact ---------------- */
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-links.is-stack li { margin: 8px 0; }
+
+.contact-links.is-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  justify-content: center;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-link:hover { color: var(--pv-teal); }
+
+.contact-link img,
+.contact-link svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+/* ---------------- Pied de page ---------------- */
+.footer {
+  background-image: url('assets/footer-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 15px;
+  color: #000;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-image img {
+  width: 100px;
+  max-width: 100%;
+}
+
+.footer-bottom {
+  text-align: start;
+  margin-inline-start: 100px;
+  font-size: 16px;
+  color: #555;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.pink { color: var(--pv-pink); }
+.orange { color: orange; }
+
+/* ==================================================================
+   Téléphone
+   La plupart des visiteurs arrivent d'Instagram ou de Facebook, donc
+   d'un téléphone tenu à la main. C'est le cas courant, pas le cas
+   dégradé.
+   ================================================================== */
+@media (max-width: 768px) {
+  .pv-header-inner { padding: 7px 16px; gap: 12px; }
+  .brand-logo { height: 48px; }
+  .locale-btn { padding: 6px 11px; }
+
+  .section-container { gap: 56px; padding: 28px 18px; }
+
+  .section,
+  .section-reverse {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .section-text,
+  .section-text1,
+  .section-image1,
+  .section-image2 {
+    max-width: 100%;
+  }
+
+  .section-text { margin-inline-start: 0; }
+  .section-reverse .section-text { order: initial; }
+
+  /* L'image d'abord, le texte ensuite : on montre avant d'expliquer. */
+  .section-image1 { order: -1; }
+
+  .section-text1 h2,
+  .section-text h2 { font-size: 26px; line-height: 1.3; }
+  .section-text1, .section-text { font-size: 16px; }
+
+  .features-container { margin-top: 20px; }
+  .features-container h2 { margin-bottom: 36px; }
+  .features-grid { gap: 32px 20px; }
+
+  .contact-section { padding: 34px 18px 30px; }
+  .contact-links.is-row { gap: 12px; flex-direction: column; align-items: center; }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section { min-width: 0; width: 100%; }
+  .contact-links.is-stack li { display: flex; justify-content: center; }
+
+  .footer-image { text-align: center; margin-top: 10px; }
+
+  .footer-bottom {
+    margin-inline-start: 0;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+/* Les boutons deviennent pleine largeur sur les très petits écrans :
+   viser un bouton de 140 px avec le pouce, dans un bus, ne marche pas. */
+@media (max-width: 460px) {
+  .contact-actions { flex-direction: column; align-items: stretch; }
+  .contact-actions .btn,
+  .contact-actions .btn2 { text-align: center; }
+}

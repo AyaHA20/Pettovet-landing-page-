@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- lang et dir sont posés au démarrage par app.js selon la langue
+     choisie (fr par défaut, rtl pour l'arabe). -->
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PettoVet — le logiciel du cabinet vétérinaire</title>
+  <meta name="description" content="PettoVet gère les dossiers médicaux, les vaccinations, les rendez-vous, la facturation en DA et le stock de votre cabinet vétérinaire. Installé au cabinet, fonctionne hors ligne. FR / العربية / EN.">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Aperçu des partages : c'est cette vignette que voient les gens
+       dans un fil Facebook ou une bulle WhatsApp, avant tout clic.
+
+       APRÈS LA PREMIÈRE MISE EN LIGNE : remplacer les deux chemins
+       og:image et twitter:image par l'adresse COMPLÈTE du site, par
+       exemple https://pettovet.vercel.app/assets/og-image.jpg.
+       Facebook résout en général un chemin relatif, mais la
+       spécification demande une adresse absolue et certains lecteurs
+       (dont des versions de WhatsApp) n'affichent rien sans elle.
+       Voir README.md, « Vérifier l'aperçu de partage ». -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PettoVet">
+  <meta property="og:title" content="PettoVet — le logiciel du cabinet vétérinaire">
+  <meta property="og:description" content="Dossiers médicaux, vaccinations, rendez-vous, facturation et stock. Installé au cabinet, fonctionne hors ligne. FR / العربية / EN.">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="ar_DZ">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PettoVet — le logiciel du cabinet vétérinaire">
+  <meta name="twitter:description" content="Dossiers médicaux, vaccinations, rendez-vous, facturation et stock. Fonctionne hors ligne.">
+  <meta name="twitter:image" content="assets/og-image.jpg">
+  <meta name="theme-color" content="#2ab7bc">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Poppins ne couvre pas l'alphabet arabe -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- ================= En-tête ================= -->
+  <header class="pv-header">
+    <div class="pv-header-inner">
+      <a href="#" class="brand" aria-label="PettoVet">
+        <img class="brand-logo" src="assets/logo.png" alt="PettoVet" width="62" height="62">
+      </a>
+
+      <span class="spacer"></span>
+
+      <div class="locale-switcher" role="group" data-i18n-aria-label="nav.language">
+        <button type="button" class="locale-btn" data-locale="fr" title="Français">FR</button>
+        <button type="button" class="locale-btn" data-locale="ar" title="العربية">عربي</button>
+        <button type="button" class="locale-btn" data-locale="en" title="English">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section-container">
+    <!-- ================= Héros ================= -->
+    <div class="section">
+      <img src="assets/dog-home.jpg" alt="" class="section-image1" width="760" height="427" fetchpriority="high">
+      <div class="section-text1">
+        <h3 class="pink" data-i18n="home.tagline"></h3>
+        <h2>
+          <span data-i18n="home.titleBefore"></span> <span class="orange">MEOW</span>
+          <span data-i18n="home.titleMiddle"></span> <span class="orange">WOOF</span>
+          <span data-i18n="home.titleAfter"></span>
+        </h2>
+        <p data-i18n="home.intro"></p>
+        <a class="btn" data-link="demo" target="_blank" rel="noopener noreferrer" data-i18n="home.ctaDemo"></a>
+      </div>
+    </div>
+
+    <!-- ================= Second bloc ================= -->
+    <div class="section section-reverse">
+      <div class="section-text">
+        <h2 data-i18n="home.secondTitle"></h2>
+        <p data-i18n="home.secondText"></p>
+        <a class="btn2" data-link="contact" data-i18n="home.ctaContact"></a>
+      </div>
+      <img src="assets/doctor-home.jpg" alt="" class="section-image2" width="760" height="427" loading="lazy" decoding="async">
+    </div>
+
+    <!-- ================= Points forts ================= -->
+    <section class="features-container">
+      <h2 data-i18n="home.featuresTitle"></h2>
+      <div class="features-grid">
+        <!-- Dossiers médicaux complets -->
+        <div class="feature-item">
+          <div class="icon" style="background-color:#FFB500">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
+              <path d="M14 3v5h5"/><path d="M12 12v5M9.5 14.5h5"/>
+            </svg>
+          </div>
+          <p class="feature-title" data-i18n="home.features.records.title"></p>
+          <p class="feature-desc" data-i18n="home.features.records.desc"></p>
+        </div>
+
+        <!-- Suivi des vaccinations -->
+        <div class="feature-item">
+          <div class="icon" style="background-color:#F99DC7">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 3l4 4"/><path d="M19 5l-2.5 2.5"/>
+              <path d="M16.5 7.5L9 15l-2 4.5L2.5 21 4 16.5 11.5 9z"/>
+              <path d="M12.5 10l2 2"/><path d="M10 12.5l2 2"/>
+            </svg>
+          </div>
+          <p class="feature-title" data-i18n="home.features.vaccines.title"></p>
+          <p class="feature-desc" data-i18n="home.features.vaccines.desc"></p>
+        </div>
+
+        <!-- Agenda des rendez-vous -->
+        <div class="feature-item">
+          <div class="icon" style="background-color:#22B8CF">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2.5"/>
+              <path d="M3 10h18M8 3v4M16 3v4"/>
+              <rect x="6.5" y="13" width="4" height="4" rx="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <p class="feature-title" data-i18n="home.features.agenda.title"></p>
+          <p class="feature-desc" data-i18n="home.features.agenda.desc"></p>
+        </div>
+
+        <!-- Facturation et paiements -->
+        <div class="feature-item">
+          <div class="icon" style="background-color:#FFB500">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 3h12a1 1 0 0 1 1 1v17l-3-2-2.5 2-2.5-2-2.5 2L6 21V4a1 1 0 0 1 1-1z"/>
+              <path d="M9.5 8h5M9.5 12h5M9.5 16h3"/>
+            </svg>
+          </div>
+          <p class="feature-title" data-i18n="home.features.billing.title"></p>
+          <p class="feature-desc" data-i18n="home.features.billing.desc"></p>
+        </div>
+
+        <!-- Gestion du stock -->
+        <div class="feature-item">
+          <div class="icon" style="background-color:#F99DC7">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 8l9-4.5L21 8v8l-9 4.5L3 16z"/>
+              <path d="M3 8l9 4.5L21 8"/><path d="M12 12.5V21"/>
+            </svg>
+          </div>
+          <p class="feature-title" data-i18n="home.features.stock.title"></p>
+          <p class="feature-desc" data-i18n="home.features.stock.desc"></p>
+        </div>
+
+        <!-- Fonctionne hors ligne -->
+        <div class="feature-item">
+          <div class="icon" style="background-color:#22B8CF">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="4" y="9" width="16" height="11" rx="2"/>
+              <path d="M8 20v-4.5h8V20"/><path d="M3 9l9-5.5L21 9"/><path d="M12 12.5v1.2"/>
+            </svg>
+          </div>
+          <p class="feature-title" data-i18n="home.features.offline.title"></p>
+          <p class="feature-desc" data-i18n="home.features.offline.desc"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Contact ================= -->
+    <section class="contact-section" id="contact">
+      <h2 data-i18n="home.contactTitle"></h2>
+      <p class="contact-lead" data-i18n="home.contactText"></p>
+
+      <div class="contact-actions">
+        <a class="btn" data-link="demo" target="_blank" rel="noopener noreferrer" data-i18n="home.ctaDemo"></a>
+        <a class="btn2" data-link="contact" data-i18n="home.ctaContact"></a>
+      </div>
+
+      <ul class="contact-links is-row contact-section-links"></ul>
+    </section>
+  </main>
+
+  <!-- ================= Pied de page ================= -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3 data-i18n="footer.getInTouch"></h3>
+        <ul class="contact-links is-stack"></ul>
+      </div>
+
+      <div class="footer-image">
+        <img src="assets/dog-footer.gif" alt="" width="100" loading="lazy">
+      </div>
+    </div>
+
+    <div class="footer-bottom" data-i18n="footer.rights"></div>
+  </footer>
+
+  <!-- translations.js est GÉNÉRÉ depuis les fichiers de langue de
+       l'application : node landing/build-translations.mjs -->
+  <script src="translations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
